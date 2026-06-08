@@ -144,7 +144,13 @@
         </p>
         <div class="links">
             <a href="https://github.com/jwise-mfg" target="_top" rel="noopener">GitHub</a>
+<?php
+  if (isset($_GET['q']) && $_GET['q'] == 'true)) {
+?>
             <a href="/mail" target="_top" rel="noopener">Email Me</a>
+<?php
+  }
+?>
             <a href="https://www.linkedin.com/in/jonathanmwise/" target="_top" rel="noopener">LinkedIn</a>
             <a href="https://www.jonathanwise.net/booking" target="_top" rel="noopener">Schedule a Meeting</a>
             <a href="https://square.link/u/0397CQzf" target="_top" rel="noopener">Pay an Invoice</a>
