@@ -145,7 +145,7 @@
         <div class="links">
             <a href="https://github.com/jwise-mfg" target="_top" rel="noopener">GitHub</a>
 <?php
-  if (isset($_GET['q']) && $_GET['q'] == 'true)) {
+  if (isset($_GET['q']) && $_GET['q'] == 'true')) {
 ?>
             <a href="/mail" target="_top" rel="noopener">Email Me</a>
 <?php
