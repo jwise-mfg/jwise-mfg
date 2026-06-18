@@ -240,12 +240,17 @@
         <h1>Jonathan Wise</h1>
         <p class="tagline">Chief Technology Architect, CESMII</p>
 
-        <p class="bio">
-            The gap between operational technology and information technology is where most smart manufacturing initiatives stall. Jonathan Wise has spent his career closing it. As Chief Technology Architect at the Clean Energy Smart Manufacturing Innovation Institute, he brings a rare OT/IT integrated background that is central to CESMII's mission of democratizing smart manufacturing for U.S. manufacturers of every size.
-        </p>
-        <p class="bio">
-            From industrial device discovery and embedded analytics to cloud platform evangelism and digital product development, his range is exactly what modern manufacturing's AI transformation demands.
-        </p>
+<?php
+        $bio = file_get_contents(__DIR__ . '/../bio.txt');
+        $paragraphs = preg_split('/\R\s*\R/', trim($bio));
+        foreach ($paragraphs as $paragraph) {
+            $paragraph = trim($paragraph);
+            if ($paragraph === '') {
+                continue;
+            }
+            echo '        <p class="bio">' . htmlspecialchars($paragraph, ENT_QUOTES, 'UTF-8') . "</p>\n";
+        }
+?>
 
         <hr class="divider">
 
