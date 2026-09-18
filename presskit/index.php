@@ -241,7 +241,7 @@
         <p class="tagline">Chief Technology Architect, CESMII</p>
 
 <?php
-        $bio = file_get_contents(__DIR__ . '/../bio.txt');
+        $bio = file_get_contents(__DIR__ . '/bio.txt');
         $paragraphs = preg_split('/\R\s*\R/', trim($bio));
         foreach ($paragraphs as $paragraph) {
             $paragraph = trim($paragraph);
@@ -283,7 +283,7 @@
         </div>
 
         <p class="section-label">Bio Text</p>
-        <a class="bio-download" href="../bio.txt" download="JonathanWise-Bio.txt">
+        <a class="bio-download" href="bio.txt" download="JonathanWise-Bio.txt">
             <div class="bio-download-icon">&#128196;</div>
             <div class="download-info">
                 <div class="download-name">Speaker Bio</div>
