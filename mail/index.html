@@ -1,6 +1,126 @@
-<script>
-//store my email base64 encoded: info@jonathanwise.net
-var encoded = "aW5mb0Bqb25hdGhhbndpc2UubmV0";
-//when this url is opened, fire a script to decode it and open a mailto:link to it
-window.location.href = "mailto:" + atob(encoded);
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Jonathan Wise</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .card {
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #fff;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .address {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .address button {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 8px;
+            color: #e2e8f0;
+            font: inherit;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .address button:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: #3b82f6;
+        }
+
+        .back {
+            color: #64b5f6;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back:hover {
+            color: #90caf9;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Email Me</h1>
+        <p>Your mail app should open shortly. If it doesn't, copy my address and paste it into your email.</p>
+        <div class="address">
+            <button id="open" type="button">Open Mail App</button>
+            <button id="copy" type="button">Copy Email Address</button>
+        </div>
+        <noscript><p>Please enable JavaScript to email me.</p></noscript>
+        <a class="back" href="/" target="_top">&larr; Back to jonathanwise.net</a>
+    </div>
+    <script>
+    //store my email base64 encoded: info@jonathanwise.net
+    var encoded = "aW5mb0Bqb25hdGhhbndpc2UubmV0";
+
+    //decode only when needed so the address never sits in the page
+    function openMail() {
+        window.location.href = "mailto:" + atob(encoded);
+    }
+
+    document.getElementById("open").addEventListener("click", openMail);
+
+    var copy = document.getElementById("copy");
+    copy.addEventListener("click", function () {
+        var done = function () {
+            copy.textContent = "Copied!";
+            setTimeout(function () { copy.textContent = "Copy Email Address"; }, 2000);
+        };
+        navigator.clipboard.writeText(atob(encoded)).then(done, function () {
+            //clipboard API unavailable: fall back to a temporary textarea
+            var temp = document.createElement("textarea");
+            temp.value = atob(encoded);
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand("copy");
+            document.body.removeChild(temp);
+            done();
+        });
+    });
+
+    //when this url is opened, fire a script to decode it and open a mailto:link to it
+    openMail();
+    </script>
+</body>
+</html>
