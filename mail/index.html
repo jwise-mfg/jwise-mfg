@@ -1,0 +1,6 @@
+<script>
+//store my email base64 encoded: info@jonathanwise.net
+var encoded = "aW5mb0Bqb25hdGhhbndpc2UubmV0";
+//when this url is opened, fire a script to decode it and open a mailto:link to it
+window.location.href = "mailto:" + atob(encoded);
+</script>
